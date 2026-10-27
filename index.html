@@ -60,8 +60,34 @@ _iub.csConfiguration = {"lang":"en","preferenceCookie":{"expireAfter":180},"site
 
 <style>  
   .w-webflow-badge { display: none !important; }
-  .transition-w {	display: flex; }
-</style></head><body data-edit=""><div class="css-main"><div class="css-root w-embed"><style>
+  .transition-w { display: none !important; pointer-events: none !important; }
+</style>
+<style>
+  /* Fix stuck preloader */
+  .transition-w { display: none !important; pointer-events: none !important; opacity: 0 !important; visibility: hidden !important; }
+  .page-w { opacity: 1 !important; visibility: visible !important; }
+</style>
+<script>
+  // Safe Polyfill for file:/// and smooth display
+  (function() {
+    if (window.location.protocol === 'file:') {
+      try {
+        var op = history.pushState;
+        history.pushState = function() { try { return op.apply(history, arguments); } catch(e){} };
+        var or = history.replaceState;
+        history.replaceState = function() { try { return or.apply(history, arguments); } catch(e){} };
+      } catch(e) {}
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var tw = document.querySelector('.transition-w');
+      if (tw) { tw.style.display = 'none'; tw.remove(); }
+      var pw = document.querySelector('.page-w');
+      if (pw) { pw.removeAttribute('data-start'); pw.style.visibility = 'visible'; pw.style.opacity = '1'; }
+    });
+  })();
+</script>
+
+</head><body data-edit=""><div class="css-main"><div class="css-root w-embed"><style>
 
   :root {
     /* Other variables */
