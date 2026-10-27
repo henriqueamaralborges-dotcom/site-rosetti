@@ -1,0 +1,173 @@
+@charset "UTF-8";
+@import url('./fonts.css');
+
+/* ==========================================================================
+   Lando Norris (LN4) - CSS Design Tokens & Root Variables
+   ========================================================================== */
+
+:root {
+  /* --- Brand Colors --- */
+  --color--lime: #d2ff00;
+  --color--lime-off: #b2c73a;
+  --color--lime-zero: rgba(210, 255, 0, 0);
+  --color--orange: #ff6b00;
+
+  /* --- Dark & Racing Neutrals --- */
+  --color--black: #111112;
+  --color--dark-green: #282c20;
+  --color--dark-green-tint-1: #3b3c38;
+  --color--dark-green-tint-2: #535450;
+
+  /* --- Light & Cream Neutrals --- */
+  --color--white: #f4f4ed;
+  --color--cream: #efefe5;
+  --color--grey-1: #ebeee0;
+  --color--grey-2: #c8cbbd;
+  --color--grey-on-track: #b9bbad;
+  --color--green-light: #ebeee0;
+  --color--green-off-white-1: #dde1d2;
+  --color--green-off-white-2: #b4b8a5;
+
+  /* --- Semantic / Contextual Colors (Defaults to Dark Theme) --- */
+  --color-bg: var(--color--dark-green);
+  --color-fg: var(--color--white);
+  --color-accent: var(--color--lime);
+  --color-muted: var(--color--green-off-white-2);
+  --color-border: var(--color--dark-green-tint-1);
+
+  /* --- Typography Families --- */
+  --font-display: 'Brier', Arial, sans-serif;
+  --font-sans: 'Mona Sans Variable', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* --- Typography Scale --- */
+  --text--impact: 7.9375rem;     /* ~127px */
+  --text--h1: 4rem;              /* 64px */
+  --text--h2: 4.5rem;            /* 72px */
+  --text--h3: 2rem;              /* 32px */
+  --text--h4: 1.5rem;            /* 24px */
+  --text--h5: 1.2rem;            /* 19.2px */
+  --text--h6: 1rem;              /* 16px */
+  --text--med: 2.76rem;          /* 44.16px */
+  --text--reg: 1.6rem;           /* 25.6px */
+  --text--btn-nav: 1.7rem;       /* 27.2px */
+  --text--btn-footer: 1.6rem;    /* 25.6px */
+  --text--btn-primary: 1rem;     /* 16px */
+  --text--btn-tertiary: 0.875rem;/* 14px */
+  --text--eyebrow: 0.578125rem;  /* ~9.25px */
+
+  /* --- Spacing & Layout --- */
+  --gap: 1.25rem;
+  --padding--container: 1rem;
+  --padding--mini: 1rem;
+  --padding--small: 2rem;
+  --padding--med: 3rem;
+  --padding--large: 4rem;
+  --padding--xlarge: 5rem;
+  --on-t-nav-spacer: 6.375rem;
+  --grid-spacer: 31.51vh;
+  --grid-col: 25.4375rem;
+  --oval-side-offset: 3rem;
+  --podium-offset: 4rem;
+  --section-padding: calc(3.5rem + (var(--gap) * 2));
+  --container-padding: 2rem;
+  --nav-height: calc(3.75rem + (var(--gap) * 2));
+
+  /* --- Border Radius --- */
+  --radius--btn-tertiary: 0.411875rem;
+  --radius--btn: 0.54rem;
+  --radius--small: 1rem;
+  --radius--med: 3rem;
+  --radius--large: 6.25rem;
+  --radius--full: 9999px;
+
+  /* --- Motion & Timing --- */
+  --cubic-default: cubic-bezier(0.65, 0.05, 0, 1);
+  --duration-default: 0.75s;
+  --duration-fast: 0.3s;
+  --animation-default: var(--duration-default) var(--cubic-default);
+
+  /* --- Fluid Typography & Viewport Calculation --- */
+  --min-width: 992px;
+  --max-width: 1920px;
+  --design-width: 1728;
+  --design-unit: 16;
+  --scale-factor: 1;
+
+  --fluid-container: clamp(var(--min-width), 100vw, var(--max-width));
+  --fluid-font: calc(var(--fluid-container) / var(--design-width) * var(--design-unit) * var(--scale-factor));
+}
+
+/* Tablet Fluid Breakpoint */
+@media screen and (max-width: 991px) {
+  :root {
+    --min-width: 768px;
+    --max-width: 991px;
+    --design-width: 1728;
+    --design-unit: 20;
+  }
+}
+
+/* Mobile Landscape Fluid Breakpoint */
+@media screen and (max-width: 767px) {
+  :root {
+    --min-width: 480px;
+    --max-width: 767px;
+  }
+}
+
+/* Mobile Portrait Fluid Breakpoint */
+@media screen and (max-width: 479px) {
+  :root {
+    --min-width: 320px;
+    --max-width: 479px;
+    --design-unit: 48;
+  }
+}
+
+/* ==========================================================================
+   Themes (Dark / Light / Lime)
+   ========================================================================== */
+
+[data-theme="dark"] {
+  --color-bg: var(--color--dark-green);
+  --color-fg: var(--color--white);
+  --color-accent: var(--color--lime);
+  --color-muted: var(--color--green-off-white-2);
+  --color-border: var(--color--dark-green-tint-1);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+
+[data-theme="light"] {
+  --color-bg: var(--color--cream);
+  --color-fg: var(--color--black);
+  --color-accent: var(--color--lime);
+  --color-muted: var(--color--dark-green-tint-2);
+  --color-border: var(--color--grey-2);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+
+[data-theme="lime"] {
+  --color-bg: var(--color--lime);
+  --color-fg: var(--color--black);
+  --color-accent: var(--color--black);
+  --color-muted: var(--color--dark-green-tint-1);
+  --color-border: var(--color--lime-off);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+
+/* Base selection styling */
+::selection {
+  background-color: var(--color--lime);
+  color: var(--color--black);
+  text-shadow: none;
+}
+
+[data-theme="lime"] ::selection {
+  background-color: var(--color--black);
+  color: var(--color--lime);
+  text-shadow: none;
+}

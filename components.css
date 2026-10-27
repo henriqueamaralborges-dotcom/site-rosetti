@@ -1,0 +1,388 @@
+@charset "UTF-8";
+@import url('./tokens.css');
+
+/* ==========================================================================
+   Lando Norris (LN4) - Core Design System Components
+   ========================================================================== */
+
+/* Global Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  line-height: 1.4;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   Typography Utilities
+   ========================================================================== */
+
+.text-impact {
+  font-family: var(--font-display);
+  font-size: var(--text--impact);
+  line-height: 0.83;
+  letter-spacing: -0.1875rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.text-h1 {
+  font-family: var(--font-display);
+  font-size: var(--text--h1);
+  line-height: 0.9;
+  letter-spacing: -0.05rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.text-h2 {
+  font-family: var(--font-display);
+  font-size: var(--text--h2);
+  line-height: 0.95;
+  letter-spacing: -0.04rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.text-h3 {
+  font-family: var(--font-sans);
+  font-size: var(--text--h3);
+  font-variation-settings: "wght" 700, "wdth" 95;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.text-h4 {
+  font-family: var(--font-sans);
+  font-size: var(--text--h4);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.text-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--text--eyebrow);
+  font-variation-settings: "wdth" 86, "wght" 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+/* Primary Lime Button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--gap) * 0.5);
+  height: 3rem;
+  padding: 0 1.25rem;
+  background-color: var(--color--lime);
+  color: var(--color--dark-green);
+  border: 1px solid var(--color--lime);
+  border-radius: var(--radius--btn);
+  font-family: var(--font-sans);
+  font-size: var(--text--btn-primary);
+  font-weight: 800;
+  font-variation-settings: "wdth" 86;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform var(--duration-fast) var(--cubic-default),
+              background-color var(--duration-fast) var(--cubic-default),
+              color var(--duration-fast) var(--cubic-default),
+              box-shadow var(--duration-fast) var(--cubic-default);
+  user-select: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--color--lime-off);
+  border-color: var(--color--lime-off);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(210, 255, 0, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Tertiary / Outline Ghost Button */
+.btn-tertiary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--gap) * 0.5);
+  height: 2.5rem;
+  padding: 0 1rem;
+  background-color: transparent;
+  color: currentColor;
+  border: 1px solid currentColor;
+  border-radius: var(--radius--btn-tertiary);
+  font-family: var(--font-sans);
+  font-size: var(--text--btn-tertiary);
+  font-weight: 700;
+  font-variation-settings: "wdth" 86;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--cubic-default);
+}
+
+.btn-tertiary:hover {
+  background-color: var(--color--lime);
+  border-color: var(--color--lime);
+  color: var(--color--dark-green);
+  transform: translateY(-1px);
+}
+
+/* Square Icon-Only Button */
+.btn-icon-only {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.75rem;
+  height: 3.75rem;
+  aspect-ratio: 1;
+  background-color: var(--color--lime);
+  color: var(--color--dark-green);
+  border: 1px solid var(--color--lime);
+  border-radius: var(--radius--btn);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--cubic-default);
+}
+
+.btn-icon-only:hover {
+  transform: scale(1.05);
+  background-color: var(--color--lime-off);
+}
+
+/* Navigation Accent Button */
+.btn-nav {
+  height: 3.75rem;
+  padding: 0 1.5rem;
+  font-size: var(--text--btn-nav);
+  font-family: var(--font-display);
+}
+
+/* ==========================================================================
+   Badges, Pills & Eyebrows
+   ========================================================================== */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius--full);
+  border: 1px solid var(--color-border);
+  background-color: rgba(255, 255, 255, 0.05);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.pill-lime {
+  background-color: var(--color--lime);
+  color: var(--color--dark-green);
+  border-color: var(--color--lime);
+}
+
+.pill-orange {
+  background-color: var(--color--orange);
+  color: var(--color--white);
+  border-color: var(--color--orange);
+}
+
+/* ==========================================================================
+   Cards & Motorsport Frames
+   ========================================================================== */
+
+/* Standard Card */
+.card {
+  position: relative;
+  background-color: var(--color--dark-green-tint-1);
+  border: 1px solid var(--color--dark-green-tint-2);
+  border-radius: var(--radius--small);
+  padding: var(--padding--small);
+  transition: transform var(--duration-fast) var(--cubic-default),
+              border-color var(--duration-fast) var(--cubic-default);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color--lime);
+}
+
+/* High-Contrast Social Callout Card */
+.card-social {
+  background: linear-gradient(145deg, #32362a 0%, #202419 100%);
+  border: 1px solid rgba(210, 255, 0, 0.15);
+  border-radius: var(--radius--med);
+  padding: var(--padding--med);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Angled Motorsport Helmet Frame */
+.helmet-card {
+  position: relative;
+  background: var(--color--dark-green);
+  border: 1px solid var(--color--dark-green-tint-1);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--duration-default) var(--cubic-default);
+}
+
+.helmet-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  background: linear-gradient(135deg, transparent 50%, var(--color--lime) 50%);
+  transition: all var(--duration-fast);
+}
+
+.helmet-card:hover {
+  border-color: var(--color--lime);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   Marquee / Endless Ticker
+   ========================================================================== */
+
+.marquee-container {
+  overflow: hidden;
+  user-select: none;
+  display: flex;
+  gap: var(--gap);
+  padding: 1.5rem 0;
+  background-color: var(--color--black);
+  border-top: 1px solid var(--color--dark-green-tint-1);
+  border-bottom: 1px solid var(--color--dark-green-tint-1);
+}
+
+.marquee-content {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: var(--gap);
+  animation: marquee-scroll 25s linear infinite;
+}
+
+.marquee-item {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color--grey-2);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.marquee-item .highlight {
+  color: var(--color--lime);
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+
+.ln-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(40, 44, 32, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ln-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ln-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.ln-nav-link {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color--white);
+  transition: color var(--duration-fast);
+  position: relative;
+}
+
+.ln-nav-link:hover, .ln-nav-link.active {
+  color: var(--color--lime);
+}
+
+/* ==========================================================================
+   Masked Footer
+   ========================================================================== */
+
+.footer-masked {
+  background-color: var(--color--black);
+  padding: 6rem 2rem 3rem 2rem;
+  position: relative;
+  -webkit-mask-image: url('./assets/svg/ln4-footer-mask-desktop.svg');
+  mask-image: url('./assets/svg/ln4-footer-mask-desktop.svg');
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: top center;
+  mask-position: top center;
+}

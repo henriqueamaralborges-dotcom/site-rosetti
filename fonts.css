@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   Lando Norris (LN4) Web Fonts
+   ========================================================================== */
+
+/* Brier Display Bold */
+@font-face {
+  font-family: 'Brier';
+  src: url('./assets/fonts/Brier-Bold.woff2') format('woff2'),
+       url('https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/67b6113a220f85ad6497495a_Brier-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Mona Sans Variable (Weight 200-900, Width 75-125) */
+@font-face {
+  font-family: 'Mona Sans Variable';
+  src: url('./assets/fonts/MonaSans-VariableFont_wdth,wght.woff2') format('woff2'),
+       url('https://cdn.prod.website-files.com/67b5a02dc5d338960b17a7e9/67bc6274c5b4108b123aa4d5_MonaSans-VariableFont_wdth%2Cwght.woff2') format('woff2');
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
